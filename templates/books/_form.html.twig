@@ -1,0 +1,6 @@
+{{ form_start(form, {'method': 'POST'}) }}
+
+{{form_widget(form) }}
+    <button style="height: 1.5vw; width: 4vw;"  class="btn btn-success">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}

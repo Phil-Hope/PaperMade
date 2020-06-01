@@ -1,0 +1,19 @@
+{% include 'include/header.html.twig' %}
+
+
+
+<div class="row">
+    <div class="col-1">
+        {% include 'include/adminpanel.html.twig' %}
+    </div>
+    <div class="container">
+        <h1>EDIT Author</h1>
+        <div class="col-8">
+
+    {{ include('author/_form.html.twig', {'button_label': 'EDIT'}) }}
+
+        </div>
+    </div>
+</div>
+
+{% include 'include/footer.html.twig' %}

@@ -1,0 +1,58 @@
+{% include 'include/header.html.twig' %}
+<div class="row">
+    <div class="col-2">
+        {% include 'include/adminpanel.html.twig' %}
+    </div>
+
+    <div class="col-8">
+    <table class="table">
+        <h1>Books</h1>
+        <tbody>
+        <tr>
+            <th>BookTitle:</th>
+            <td>{{ book.BookTitle }}</td>
+        </tr>
+                <td><img class="img-thumbnail" style="max-height: 15vw; width:auto;" src="{{ book.coverImagePath }}"></td>
+            <tr>
+                <th>Original Title:</th>
+                <td>{{ book.OriginalTitle }}</td>
+            </tr>
+            <tr>
+                <th>Year of Publication:</th>
+                <td>{{ book.YearofPublication }}</td>
+            </tr>
+            <tr>
+                <th>Genre:</th>
+                <td>{{ book.Genre }}</td>
+            </tr>
+            <tr>
+                <th>Millions Sold:</th>
+                <td>{{ book.MillionsSold }}</td>
+            </tr>
+            <tr>
+                <th>Language Written:</th>
+                <td>{{ book.LanguageWritten }}</td>
+            </tr>
+        {% for author in authors %}
+
+            {% if book.Author == author.id %}
+            <tr>
+                <th>Author:</th>
+                <td><a href="{{ path('author_show', {'id': author.id}) }}">{{ author.Name }} {{ author.Surname}}</a></td>
+            </tr>{% endif %}{% endfor %}
+            <tr>
+                <th>Plot:</th>
+                <td>{{ book.Plot }}</td>
+            </tr>
+            <tr>
+                <th>PlotSource</th>
+                <td><a href="{{ book.PlotSource }}">{{ book.PlotSource }}</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-warning" style="height: 1.5vw; width: 4vw;"   href="{{ path('books_edit', {'id': book.id}) }}"><strong>EDIT</strong></a>
+    {{ include('books/_delete_form.html.twig') }}
+</div>
+</div>
+</div>
+{% include 'include/footer.html.twig' %}

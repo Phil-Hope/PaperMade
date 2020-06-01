@@ -1,0 +1,18 @@
+{% include 'include/header.html.twig' %}
+
+    <h1>Edit Books</h1>
+
+<div class="row">
+    <div class="col-1">
+        {% include 'include/adminpanel.html.twig' %}
+    </div>
+    <div class="container">
+        <div class="col-8">
+
+    {{ include('books/_form.html.twig', {'button_label': 'Update'}) }}
+            {{ include('books/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+</div>
+{% include 'include/footer.html.twig' %}

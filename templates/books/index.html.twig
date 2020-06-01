@@ -1,0 +1,66 @@
+
+{% include 'include/header.html.twig' %}
+<style>
+    th
+    {
+        font-size:1vw;
+    }
+    td
+    {
+        font-size: 0.8vw;
+        max-width: 20vw;
+    }
+</style>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-1">
+{% include 'include/adminpanel.html.twig' %}
+    </div>
+    <div class="col-11">
+        <div style="overflow-y:scroll; height: auto;">
+            <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>BookTitle</th>
+                <th>OriginalTitle</th>
+                <th>YearofPublication</th>
+                <th>Genre</th>
+                <th>MillionsSold</th>
+                <th>LanguageWritten</th>
+                <th>CoverImagePath</th>
+                <th></th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>
+                    <a class="btn btn-success" style="height: 1.5vw; width: 4vw; margin-top: 0.5vw;" href="{{ path('books_show', {'id': book.id}) }}"><strong>SHOW</strong></a>
+                    <a class="btn btn-warning" style="height: 1.5vw; width: 4vw; margin-top: 0.5vw;" href="{{ path('books_edit', {'id': book.id}) }}"><strong>EDIT</strong></a>
+                </td>
+                <td>{{ book.BookTitle }}</td>
+                <td>{{ book.OriginalTitle }}</td>
+                <td>{{ book.YearofPublication }}</td>
+                <td>{{ book.Genre }}</td>
+                <td>{{ book.MillionsSold }}</td>
+                <td>{{ book.LanguageWritten }}</td>
+                <td><img class="img-thumbnail" style="max-height: 10vw; width: auto;" src="{{ book.coverImagePath }}"></td>
+                {% for author in authors %}
+                {% if book.author == author.id  %}
+                    <td>{{ author.Name }} {{ author.Surname }}</td>
+            </tr>
+            {% endif %}
+{% endfor %}
+{% endfor %}
+        </tbody>
+    </table>
+</div>
+    </div>
+    </div>
+</div>
+</div>
+{% include 'include/footer.html.twig' %}
+

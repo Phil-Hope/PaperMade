@@ -1,0 +1,52 @@
+{% include 'include/header.html.twig' %}
+<style>
+    th
+    {
+        font-size: 0.9vw;
+    }
+    td
+    {
+        font-size: 0.7vw;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            {% include 'include/adminpanel.html.twig' %}
+        </div>
+        <div class="col-10">
+            <div class="container" style="overflow-x:auto; max-height: 70vw;">
+    <h1>ChangeLog index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date Created</th>
+                <th>Date Updated</th>
+                <th>Book Changed</th>
+                <th>Changed By</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}{% for user in users %}
+        {% for change_log in change_logs %}{% if change_log.BookChanged == book.id %}{% if change_log.ChangedBy == user.id %}
+
+
+                <tr>
+                    <td>{{ change_log.DateCreated is empty ? "" | format_datetime }}</td>
+
+                <td>{{ change_log.DateUpdated is empty ? "" | format_datetime }}</td>
+
+                    <td><a href="{{ path('books_show', {'id': book.id}) }}">{{ book.BookTitle }}</a></td>
+
+      <td>  {{ user.FirstName}} {{ user.LastName }}</td>
+                    {% endif %}   {% endif %}{% endfor %}{% endfor %}{% endfor %}
+        </tr>
+
+        </tbody>
+    </table>
+        </div>
+    </div>
+    </div>
+</div>
+            {% include 'include/footer.html.twig' %}

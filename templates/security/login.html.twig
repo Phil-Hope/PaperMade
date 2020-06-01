@@ -1,0 +1,64 @@
+{% include 'include/header.html.twig' %}
+<div class="container" style="width: 50%;">
+
+<form method="post" style="margin-top: 10vw; margin-bottom: 10vw;">
+    <h1 style="margin-bottom: 2vw;">ADMIN LOGIN</h1>
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+
+    <div class="row">
+        <div class="col-0.5">
+            <label for="inputEmail"><svg class="bi bi-envelope-fill" width="1vw" height="1vw" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                </svg></label>
+        </div>
+        <div class="col-6">
+    <input  type="email" value="{{ last_username }}" name="email" placeholder="@email" id="inputEmail" class="form-control mb-2 mr-sm-2" required autofocus>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">A valid email must be entered</div>
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-0.5">
+    <label for="inputPassword"><svg class="bi bi-lock-fill" width="1vw" height="1vw" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <rect width="11" height="9" x="2.5" y="7" rx="2"/>
+            <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+        </svg></label>
+    </div>
+    <div class="col-6">
+    <input type="password" name="password" id="inputPassword" placeholder="password" class="form-control mb-2 mr-sm-2" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Password field can not be blank</div>
+    </div>
+</div>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+<div class="row" style="margin-top: 1vw;">
+    <div clas="col-0.5">
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</div></div>
+</form>
+</div>
+{% include 'include/footer.html.twig' %}

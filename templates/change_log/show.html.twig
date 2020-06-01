@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ChangeLog{% endblock %}
+
+{% block body %}
+    <h1>ChangeLog</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ change_log.id }}</td>
+            </tr>
+            <tr>
+                <th>DateCreated</th>
+                <td>{{ change_log.DateCreated ? change_log.DateCreated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateUpdated</th>
+                <td>{{ change_log.DateUpdated ? change_log.DateUpdated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('change_log_index') }}">back to list</a>
+
+    <a href="{{ path('change_log_edit', {'id': change_log.id}) }}">edit</a>
+
+    {{ include('change_log/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% include 'include/header.html.twig' %}
+
+    <div class="row">
+        <div class="col-1">
+    <h1>Create new Author</h1>
+            {% include 'include/adminpanel.html.twig' %}
+        </div>
+        <div class="container">
+            <div class="col-8">
+    {{ include('author/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="container">
+        <table class="table">
+            <h1>Authors In Database</h1>
+            <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Nationality</th>
+                <th>BirthYear</th>
+                <th>DeathYear</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.Name }} {{ author.Surname }}</td>
+                    <td>{{ author.Nationality }}</td>
+                    <td>{{ author.BirthYear }}</td>
+                    <td>{{ author.DeathYear }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'include/footer.html.twig' %}
