@@ -33,9 +33,9 @@
 
 
                 <tr>
-                    <td>{{ change_log.DateCreated is empty ? "" | format_datetime }}</td>
+                    <td>{{ change_log.DateCreated is empty ? "" : change_log.DateCreated|date('Y-m-d H:i:s')}}</td>
 
-                <td>{{ change_log.DateUpdated is empty ? "" | format_datetime }}</td>
+                    <td>{{ change_log.DateUpdated is empty ? "" : change_log.DateCreated|date('Y-m-d H:i:s') }}</td>
 
                     <td><a href="{{ path('books_show', {'id': book.id}) }}">{{ book.BookTitle }}</a></td>
 
