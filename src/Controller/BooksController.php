@@ -66,7 +66,8 @@ class BooksController extends AbstractController
             $entityManager->persist($book);
             $entityManager->flush();
 
-            $data = $form->getData('id');
+            $object = $form->getData();
+            $data = reset($object);
             $date = new DateTime();
 
             $changeLog = new ChangeLog;
@@ -131,7 +132,8 @@ class BooksController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData('id');
+           $object = $form->getData();
+            $data = reset($object);
             $date = new DateTime();
 
             $changeLog = new ChangeLog;
