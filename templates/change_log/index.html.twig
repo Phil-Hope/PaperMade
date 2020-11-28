@@ -16,7 +16,7 @@
         </div>
         <div class="col-10">
             <div class="container" style="overflow-x:auto; max-height: 70vw;">
-    <h1 class="text-center">ChangeLog index</h1>
+    <h1 class="text-center">ChangeLog</h1>
 
     <table class="table">
         <thead>
@@ -29,13 +29,14 @@
         </thead>
         <tbody>
         {% for book in books %}{% for user in users %}
-        {% for change_log in change_logs %}{% if change_log.BookChanged == book.id %}{% if change_log.ChangedBy == user.id %}
-
+        {% for change_log in change_logs %}
+        {% if change_log.BookChanged == book.id %}
+        {% if change_log.ChangedBy == user.id %}
 
                 <tr>
                     <td>{{ change_log.DateCreated is empty ? "" : change_log.DateCreated|date('Y-m-d H:i:s')}}</td>
 
-                    <td>{{ change_log.DateUpdated is empty ? "" : change_log.DateCreated|date('Y-m-d H:i:s') }}</td>
+                    <td>{{ change_log.DateUpdated is empty ? "" : change_log.DateUpdated|date('Y-m-d H:i:s') }}</td>
 
                     <td><a href="{{ path('books_show', {'id': book.id}) }}">{{ book.BookTitle }}</a></td>
 
