@@ -1,32 +1,34 @@
 {% include 'include/header.html.twig' %}
 
 <div class="row">
-    <div class="col-1">
+
+    <div class="col-2">
         {% include 'include/adminpanel.html.twig' %}
     </div>
+
     <div class="container">
-        <h1>ADD User</h1>
-        <div class="col-8">
-    {{ form_start(form) }}
-        <div class="form-group">
-    {{ form_row(form.FirstName) }}
-        </div>
-        <div class="form-group">
-    {{ form_row(form.LastName) }}
-        </div>
-        <div class="form-group">
-    {{ form_row(form.email) }}
-        </div>
+        <div class="col-10">
+            <h1 class="text-center">New User</h1>
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_row(form.FirstName) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.LastName) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.email) }}
+            </div>
             <div class="form-group">
                 {{ form_row(form.roles) }}
             </div>
-        <div class="form-group">
-    {{ form_row(form.password.first) }}
-    {{ form_row(form.password.second) }}
+            <div class="form-group">
+                {{ form_row(form.password.first) }}
+                {{ form_row(form.password.second) }}
+            </div>
+            <button class="btn btn-success" type="submit">ADD USER</button>
+            {{ form_end(form) }}
         </div>
-    <button class="btn btn-success" type="submit">ADD USER</button>
-    {{ form_end(form) }}
-    </div>
     </div>
 </div>
-    {% include 'include/footer.html.twig' %}
+{% include 'include/footer.html.twig' %}

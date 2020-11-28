@@ -1,48 +1,50 @@
 {% include 'include/header.html.twig' %}
 
-    <div class="row">
-        <div class="col-1">
-            {% include 'include/adminpanel.html.twig' %}
-        </div>
-        <div class="col-4">
-            <h1>ADD BOOKS</h1>
-                <h5 style="color: #721c24;">Please ensure the author has been added, and exists in the database before adding a book.</h5>
-
-
-            {{ include('books/_form.html.twig') }}
-
-
-        </div>
-        <div class="3">
-            <table class="table">
-                <h1>Author IDs</h1>
-                <thead>
-                <tr>
-                    <th>Author Id:</th>
-                    <th>Full Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for author in authors %}
-                    <tr>
-                        <td>{{ author.id }}</td>
-                        <td>{{ author.Name }} {{ author.Surname }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="col-4" style="overflow-x:scroll; max-height: 30vw;">
-                <h2>Books In Database</h2>
-                <table class="table" >
-                    {% for book in books %}
-                    <tr>
-                        <td><h1>{{ book.BookTitle }}</h1></td>
-                        <td><a href="{{ path('books_show', {'id': book.id}) }}"><img class="img-thumbnail" style="max-height: 10vw; width: auto" src="{{ book.coverImagePath }}"></a></td>
-                        </tr>
-                    {% endfor %}
-                </table>
-        </div>
+<div class="row">
+    <div class="col-2">
+        {% include 'include/adminpanel.html.twig' %}
     </div>
+    <div class="col-4">
+        <h6 style="color: #721c24;">Please ensure the author has been added, and exists in the database before adding a
+            book.</h6>
+        <h6>Add New Book</h6>
+        {{ include('books/_form.html.twig') }}
+
+    </div>
+    <div class="col-2" style="overflow-x:scroll; overflow-y:scroll; max-height: 50rem;">
+        <table class="table">
+            <h3>Author IDs</h3>
+            <thead>
+            <tr>
+                <th>Author Id:</th>
+                <th>Full Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td style="font-size: 0.8rem;">{{ author.id }}</td>
+                    <td style="font-size: 0.8rem;">{{ author.Name }} {{ author.Surname }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4" style="overflow-x:scroll; overflow-y:scroll; max-height: 50rem;">
+        <h4>Books In Database</h4>
+        <table class="table">
+            {% for book in books %}
+                <tr>
+                    <td style="font-size: 0.8rem;">{{ book.BookTitle }}</td>
+                    <td><a href="{{ path('books_show', {'id': book.id}) }}">
+                            <img class="img-thumbnail" style="max-height: 10vw; width: auto"
+                                 src="{{ book.coverImagePath }}">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 </div>
 {% include 'include/footer.html.twig' %}

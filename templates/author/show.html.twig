@@ -1,11 +1,12 @@
 {% include 'include/header.html.twig' %}
-<h1>Add new Books</h1>
+
 <div class="row">
     <div class="col-2">
         {% include 'include/adminpanel.html.twig' %}
     </div>
-    <h1>Author</h1>
+
         <div class="col-8">
+            <h1 class="text-center">Author</h1>
     <table class="table">
         <tbody>
             <tr>
@@ -35,14 +36,20 @@
             {% if book.Author == author.id %}
             <tr>
                 <th>Books Written</th>
-                <td><a href="{{ path('books_show', {'id': book.id}) }}"><img class="img-thumbnail" style="max-height: 10vw; width: auto;" src="{{ book.coverImagePath }}"></a></td>
+                <td>
+                    <a href="{{ path('books_show', {'id': book.id}) }}">
+                        <img class="img-thumbnail" style="max-height: 10vw; width: auto;" src="{{ book.coverImagePath }}">
+                    </a>
+                </td>
             {% endif %}
             {% endfor %}
             </tr>
         </tbody>
     </table>
-            <a class="btn btn-warning" style="height: 1.5vw; width: 4vw;"  href="{{ path('author_edit', {'id': author.id}) }}"><strong>EDIT</strong></a>
+            <a class="btn btn-warning btn-sm" style="margin-bottom: 0.5rem;"
+               href="{{ path('author_edit', {'id': author.id}) }}">
+                <strong>EDIT</strong></a>
+            {{ include('author/_delete_form.html.twig') }}
         </div>
     </div>
-    {{ include('author/_delete_form.html.twig') }}
         {% include 'include/footer.html.twig' %}

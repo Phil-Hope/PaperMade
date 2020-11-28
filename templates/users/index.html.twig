@@ -3,19 +3,19 @@
 <style>
     th
     {
-        font-size:1vw;
+        font-size:1rem;
     }
     td
     {
-        font-size: 0.8vw;
+        font-size: 0.8rem;
     }
 </style>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-1">
+        <div class="col-2">
             {% include 'include/adminpanel.html.twig' %}
         </div>
-        <div class="col-11">
+        <div class="col-10">
             <div style="overflow-y:scroll; height: auto;">
                 <div class="table-responsive">
                     <div class="container">
@@ -35,11 +35,11 @@
         {% for user in users %}
             <tr>
                 <td>
-                    <a  class="btn btn-success" style="height: 1.5vw; width: 4vw;" href="{{ path('users_show', {'id': user.id}) }}"><strong>SHOW</strong></a>
+                    <a  class="btn btn-success btn-sm" href="{{ path('users_show', {'id': user.id}) }}"><strong>SHOW</strong></a>
                 </td>
 
                 <td>
-                    <a class="btn btn-warning" style="height: 1.5vw; width: 4vw;" href="{{ path('users_edit', {'id': user.id}) }}"><strong>EDIT</strong></a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('users_edit', {'id': user.id}) }}"><strong>EDIT</strong></a>
                 </td>
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>

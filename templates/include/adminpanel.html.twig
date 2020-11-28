@@ -1,63 +1,64 @@
 {% block adminpanel %}
     <style>
-        label
-        {
-            font-size: 0.8vw;
+        label {
+            font-size: 0.8rem;
         }
     </style>
-<nav class="navbar navbar-light bg-light">
-    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('admin') }}">
-                            <label><strong>ADMIN MENU</strong></label>
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="#">
-                <label>WELCOME <hr/><strong>{{ app.user.FirstName }} {{ app.user.LastName }}</strong></label>
-                <span class="sr-only">(current)</span>
-            </a>
-        </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('books_index') }}">
-                            <label>VIEW Books</label>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('books_new') }}">
-                            <span data-feather="shopping-cart"></span>
-                            <label>ADD Book</label>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('author_index') }}">
-                            <label>VIEW Authors</label>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('author_new') }}">
-                            <label>ADD Author</label>
-                        </a>
-                    </li>
-        {% if is_granted('ROLE_SUPER_USER') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('change_log_index') }}">
-                          <label>ChangeLog</label>
-                        </a>
-                    </li>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url('add_user') }}">
-               <label>ADD User</label>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url('users_index') }}">
-                <label>VIEW/EDIT User</label>
-            </a>
-        </li>
-        {% endif %}
-                </ul>
-                </nav>
+    <nav class="navbar navbar-light bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ url('admin') }}">
+                    <label><strong>ADMIN MENU</strong></label>
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">
+                    <label>WELCOME
+                        <hr/>
+                        <strong>{{ app.user.FirstName }} {{ app.user.LastName }}</strong></label>
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('books_index') }}">
+                    <label style="color: black">VIEW Books</label>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('books_new') }}">
+                    <span data-feather="shopping-cart"></span>
+                    <label style="color: black">ADD Book</label>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('author_index') }}">
+                    <label style="color: black">VIEW Authors</label>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('author_new') }}">
+                    <label style="color: black">ADD Author</label>
+                </a>
+            </li>
+            {% if is_granted('ROLE_SUPER_USER') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('change_log_index') }}">
+                        <label style="color: black">ChangeLog</label>
+                    </a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('add_user') }}">
+                        <label style="color: black">ADD User</label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('users_index') }}">
+                        <label style="color: black">VIEW/EDIT User</label>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
 {% endblock %}
